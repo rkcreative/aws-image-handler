@@ -2,6 +2,8 @@
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/rkcreative/aws-image-handler.svg?style=flat-square)](https://packagist.org/packages/rkcreative/aws-image-handler)
 [![Total Downloads](https://img.shields.io/packagist/dt/rkcreative/aws-image-handler.svg?style=flat-square)](https://packagist.org/packages/rkcreative/aws-image-handler)
+[![GitHub stars](https://img.shields.io/github/stars/rkcreative/aws-image-handler.svg?style=flat-square)](https://github.com/rkcreative/aws-image-handler/stargazers)
+[![Last Commit](https://img.shields.io/github/last-commit/rkcreative/aws-image-handler?style=flat-square)](https://github.com/rkcreative/aws-image-handler/commits)
 [![CI](https://github.com/rkcreative/aws-image-handler/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/rkcreative/aws-image-handler/actions/workflows/ci.yml)
 [![License](https://img.shields.io/github/license/rkcreative/aws-image-handler?style=flat-square)](LICENSE.md)
 
