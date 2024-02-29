@@ -2,7 +2,7 @@
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/rkcreative/aws-image-handler.svg?style=flat-square)](https://packagist.org/packages/rkcreative/aws-image-handler)
 [![Total Downloads](https://img.shields.io/packagist/dt/rkcreative/aws-image-handler.svg?style=flat-square)](https://packagist.org/packages/rkcreative/aws-image-handler)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/rkcreative/aws-image-handler/CI?style=flat-square)](https://github.com/rkcreative/aws-image-handler/actions)
+[![CI](https://github.com/rkcreative/aws-image-handler/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/rkcreative/aws-image-handler/actions/workflows/ci.yml)
 [![License](https://img.shields.io/github/license/rkcreative/aws-image-handler?style=flat-square)](LICENSE.md)
 
 This package provides a Laravel wrapper for the [AWS Serverless Image Handler](https://aws.amazon.com/solutions/implementations/serverless-image-handler/) service.
