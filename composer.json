@@ -1,0 +1,35 @@
+{
+  "name": "rkcreative/laravel-aws-serverless-image-handler",
+  "description": "A Laravel package to generate image urls from the AWS Serverless Image Handler CloudFormation Stack.",
+  "type": "library",
+  "require": {
+    "guzzlehttp/guzzle": "^6.0 || ^7.0",
+    "illuminate/support": "^5.0 || ^6.0 || ^7.0 || ^8.0 || ^9.0 || ^10.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0 || ^10.0 || ^11.0",
+    "orchestra/testbench": "^3.5 || ^4.0 || ^5.0 || ^6.0 || ^7.0 || ^8.0"
+  },
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Rkcreative\\AwsImageHandler\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Rkcreative\\AwsImageHandler\\AwsImageHandlerServiceProvider"
+      ],
+      "aliases": {
+        "ImageHandler": "Rkcreative\\AwsImageHandler\\Facades\\ImageHandler"
+      }
+    }
+  },
+  "authors": [
+    {
+      "name": "Robert Pettique",
+      "email": "robert@rkcreative.co"
+    }
+  ]
+}

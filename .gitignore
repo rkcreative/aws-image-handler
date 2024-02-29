@@ -1,0 +1,4 @@
+/vendor/
+laravel-aws-serverless-image-handler.code-workspace
+composer.lock
+.phpunit.result.cache
