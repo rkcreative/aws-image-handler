@@ -59,12 +59,16 @@ class ImageHandler
         ], $imageHandler->getOptions());
     }
 
-    public function url(string $imageKey, string $bucket = null): string
+    public function createUrl(string $imageKey, string $bucket = null): string
     {
         $bucket = $bucket ?? $this->defaultBucket;
 
         if (!$imageKey) {
             throw new \Exception('Image key is not set.');
+        }
+
+        if (!$bucket) {
+            throw new \Exception('S3 bucket is not set.');
         }
 
         $edits  = base64_encode(json_encode(['bucket' => $bucket, 'key' => $imageKey, 'edits' => $this->options]));

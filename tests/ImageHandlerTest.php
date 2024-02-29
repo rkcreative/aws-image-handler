@@ -259,7 +259,7 @@ class ImageHandlerTest extends TestCase
     {
         $imageHandler = new ImageHandler();
 
-        $url = $imageHandler->url('path/to/image.jpg');
+        $url = $imageHandler->createUrl('path/to/image.jpg');
 
         $this->assertStringContainsString('your-test-distribution-url/', $url);
 
@@ -283,7 +283,7 @@ class ImageHandlerTest extends TestCase
         $property->setAccessible(true);
         $property->setValue($imageHandler, $distributionUrl);
 
-        $url = $imageHandler->url('test.jpg');
+        $url = $imageHandler->createUrl('test.jpg');
 
         $this->assertMatchesRegularExpression('/^' . preg_quote($distributionUrl, '/') . '\/[a-zA-Z0-9+\/=]+$/', $url);
 

@@ -23,19 +23,29 @@ You can install the package via composer:
 composer require rkcreative/aws-image-handler
 ```
 
-### For Laravel 5.5+
+After installing the package, the `AwsImageHandlerServiceProvider` and the `ImageHandler` facade are automatically registered, thanks to Laravel's package discovery feature.
 
-After installing the package, the `AwsImageHandlerServiceProvider` is automatically registered thanks to the package discovery feature in Laravel.
+If you're using Laravel 5.5 or later, no further steps are required. You can start using the `ImageHandler` facade right away:
 
-### For Laravel 5
+```php
+use ImageHandler;
 
-If for some reason you need to register the service provider manually, you can add it to the `providers` array in your `config/app.php` file:
+$url = ImageHandler::resize(200, 200)->createUrl('path/to/image.jpg');
+```
+
+If you're using a version of Laravel that's earlier than 5.5, you'll need to manually register the service provider and facade. Add the following lines to the `providers` and `aliases` arrays in your `config/app.php` file:
 
 ```php
 'providers' => [
     // Other service providers...
 
     Rkcreative\AwsImageHandler\AwsImageHandlerServiceProvider::class,
+],
+
+'aliases' => [
+    // Other aliases...
+
+    'ImageHandler' => Rkcreative\AwsImageHandler\Facades\ImageHandler::class,
 ],
 ```
 
@@ -47,20 +57,20 @@ After installing the package, you should publish the configuration file:
 php artisan vendor:publish --provider="Rkcreative\AwsImageHandler\AwsImageHandlerServiceProvider" --tag="config"
 ```
 
-This command will create a `aws-image-handler.php` configuration file in your `config` directory. In this file, you can set your distribution URL and the default bucket:
+This command will create a `aws-image-handler.php` configuration file in your `config` directory. In this file, you can set your distribution URL and the default S3 bucket:
 
 ```php
 return [
     'distributionUrl' => env('AWS_IMAGE_HANDLER_URL', 'default-url'),
-    'defaultBucket'   => env('AWS_IMAGE_HANDLER_BUCKET', 'default-bucket'),
+    'defaultBucket'   => env('AWS_IMAGE_HANDLER_S3_BUCKET', 'default-bucket'),
 ];
 ```
 
-You should also add the `AWS_IMAGE_HANDLER_URL` and `AWS_IMAGE_HANDLER_BUCKET` variables to your `.env` file:
+You should also add the `AWS_IMAGE_HANDLER_URL` and `AWS_IMAGE_HANDLER_S3_BUCKET` variables to your `.env` file:
 
 ```
 AWS_IMAGE_HANDLER_URL=your-distribution-url
-AWS_IMAGE_HANDLER_BUCKET=your-default-bucket
+AWS_IMAGE_HANDLER_S3_BUCKET=your-default-bucket
 ```
 
 ## Usage
@@ -74,10 +84,10 @@ $imageHandler = new ImageHandler();
 $imageHandler->resize(200, 200);
 
 // Generate the URL for the transformed image
-$url = $imageHandler->url('path/to/image.jpg');
+$url = $imageHandler->createUrl('path/to/image.jpg');
 ```
 
-In this example, the `resize` macro is used to set the desired image dimensions, and then the `url` method is used to generate the URL for the transformed image. The resulting URL will look something like this:
+In this example, the `resize` macro is used to set the desired image dimensions, and then the `createUrl` method is used to generate the URL for the transformed image. The resulting URL will look something like this:
 
 ```
 https://your-cloudfront-url.com/eyJidWNrZXQiOiJidWNrZXQiLCJrZXkiOiJwYXRoL3RvL2ltYWdlLmpwZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMH19fQ==
@@ -85,17 +95,17 @@ https://your-cloudfront-url.com/eyJidWNrZXQiOiJidWNrZXQiLCJrZXkiOiJwYXRoL3RvL2lt
 
 In this URL, `your-cloudfront-url.com` is your CloudFront distribution URL, and the long base64 string is the encoded edit options.
 
-## Using the Facade
+## Using the Alias
 
-The package also provides a facade, which you can use for even easier access. Here's an example:
+The package also provides an alias, which you can use for even easier access. Here's an example:
 
 ```php
-use Rkcreative\AwsImageHandler\Facades\ImageHandler;
+use ImageHandler;
 
-$url = ImageHandler::resize(200, 200)->url('path/to/image.jpg');
+$url = ImageHandler::resize(200, 200)->createUrl('path/to/image.jpg');
 ```
 
-In this example, `ImageHandler::resize(200, 200)` is equivalent to `(new ImageHandler())->resize(200, 200)`. You can use this facade anywhere in your Laravel application.
+In this example, `ImageHandler::resize(200, 200)` is equivalent to `(new Rkcreative\AwsImageHandler\Services\ImageHandler())->resize(200, 200)`. You can use this alias anywhere in your Laravel application.
 
 ## Available Macros
 
@@ -169,14 +179,14 @@ Now, you can use your macro like any other method on the `ImageHandler` class:
 
 ```php
 $imageHandler = new ImageHandler();
-$imageHandler->blur(3)->url('path/to/image.jpg');
+$imageHandler->blur(3)->createUrl('path/to/image.jpg');
 ```
 
 In this example, the `blur` macro is used to add a blur effect to the image. The `blur` value can be any number between 0.3 (low blur) and 1000 (maximum blur).
 
 ## Contributing
 
-Contributions are welcome and will be fully credited. We accept contributions via Pull Requests on Github.
+Contributions are welcome. We accept contributions via Pull Requests on Github.
 
 ### Bug Reports
 
