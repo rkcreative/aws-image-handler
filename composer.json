@@ -1,5 +1,5 @@
 {
-  "name": "rkcreative/laravel-aws-serverless-image-handler",
+  "name": "rkcreative/aws-image-handler",
   "description": "A Laravel package to generate image urls from the AWS Serverless Image Handler CloudFormation Stack.",
   "type": "library",
   "require": {
