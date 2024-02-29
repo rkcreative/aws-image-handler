@@ -28,7 +28,7 @@ After installing the package, the `AwsImageHandlerServiceProvider` and the `Imag
 If you're using Laravel 5.5 or later, no further steps are required. You can start using the `ImageHandler` facade right away:
 
 ```php
-use ImageHandler;
+use Rkcreative\AwsImageHandler\Facades\ImageHandler;
 
 $url = ImageHandler::resize(200, 200)->createUrl('path/to/image.jpg');
 ```
