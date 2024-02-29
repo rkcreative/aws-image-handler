@@ -19,7 +19,7 @@ class AwsImageHandlerServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__ . '/../config/aws-image-handler.php' => config_path('aws-image-handler.php'),
-        ]);
+        ], 'config');
 
         $macros = [
             'smartCrop',
