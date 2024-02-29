@@ -16,6 +16,18 @@
       "Rkcreative\\AwsImageHandler\\": "src/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Rkcreative\\AwsImageHandler\\Tests\\": "tests/"
+    }
+  },
+  "minimum-stability": "beta",
+  "prefer-stable": true,
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "optimize-autoloader": true
+  },
   "extra": {
     "laravel": {
       "providers": [
