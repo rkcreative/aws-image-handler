@@ -19,6 +19,9 @@ jobs:
 
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
-
+      - name: Clear Git cache
+        run: |
+          git rm -r --cached .
+          git add .
       - name: Run tests
         run: ./vendor/bin/phpunit
