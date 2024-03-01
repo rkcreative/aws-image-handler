@@ -36,7 +36,7 @@ class AwsImageHandlerServiceProvider extends ServiceProvider
             ImageHandler::macro($macro, function (...$args) use ($macro) {
                 $macroFunction = require __DIR__ . "/Macros/{$macro}.php";
 
-                return $macroFunction($this, ...$args);
+                return $macroFunction(...$args);
             });
         }
     }

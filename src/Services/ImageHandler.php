@@ -34,29 +34,10 @@ class ImageHandler
 
     public function getOptions()
     {
+        // Log the options property before returning it
+        error_log('From getOptions: ' . print_r($this->options, true), 3, __DIR__ . '/../../logfile.log');
+
         return $this->options;
-    }
-
-    public function testMultipleEdits()
-    {
-        $imageHandler = new ImageHandler();
-
-        // Apply multiple edits
-        $imageHandler->resize(200, 200, 'cover', 'black');
-        $imageHandler->quality(75);
-        $imageHandler->rotate(180);
-
-        // Check that the options property contains all edits
-        $this->assertEquals([
-            'resize' => [
-                'width'      => 200,
-                'height'     => 200,
-                'fit'        => 'cover',
-                'background' => 'black'
-            ],
-            'quality' => 75,
-            'rotate'  => 180
-        ], $imageHandler->getOptions());
     }
 
     public function createUrl(string $imageKey, string $bucket = null): string

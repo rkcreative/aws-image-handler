@@ -7,6 +7,13 @@ use TypeError;
 
 class ImageHandlerTest extends TestCase
 {
+    protected function getPackageProviders($app)
+    {
+        return [
+            \Rkcreative\AwsImageHandler\AwsImageHandlerServiceProvider::class,
+        ];
+    }
+
     protected function setUp(): void
     {
         parent::setUp();
