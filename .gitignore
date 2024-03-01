@@ -2,3 +2,6 @@
 laravel-aws-serverless-image-handler.code-workspace
 composer.lock
 .phpunit.result.cache
+logfile.log
+.phpunit.cache
+.phpunit.cache/test-results
