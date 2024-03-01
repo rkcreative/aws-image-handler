@@ -1,6 +1,6 @@
 <?php
 
-return function (int $width = 100, int $height = 100, string $fit = 'cover', $color = null) {
+return function (?int $width = 100, ?int $height = 100, string $fit = 'cover', $color = null) {
     $validFits = ['cover', 'contain', 'fill', 'inside', 'outside'];
 
     if (!in_array($fit, $validFits)) {
