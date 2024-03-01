@@ -152,18 +152,20 @@ class ImageHandlerMacroServiceProvider extends ServiceProvider
     public function boot()
     {
         // Sample blur image operation from the Sharp node.js image library to show how you could add it as a custom option.
-        ImageHandler::macro('blur', function ($imageHandler, $blur) {
+        ImageHandler::macro('blur', function ($blur) {
             if ($blur < 0.3 || $blur > 1000) {
                 throw new \InvalidArgumentException('Invalid blur value. It must be = a sigma value between 0.3 and 1000.');
             }
 
-            $imageHandler->options['blur'] = $blur;
+            $this->options['blur'] = $blur;
+
+            return $this;
         });
     }
 }
 ```
 
-In this example, the `blur` macro receives the `ImageHandler` instance and a `blur` value as arguments. The `blur` value is then added to the image handler options.
+In this example, the `blur` macro receives a `blur` value as an argument. The `blur` value is then added to the image handler options. The macro modifies the state of the `ImageHandler` instance and then returns the instance itself, allowing for method chaining.
 
 3. Register your new service provider in the `providers` array in `config/app.php`:
 
